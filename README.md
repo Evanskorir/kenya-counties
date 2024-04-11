@@ -1,4 +1,4 @@
-Analysis of the Dynamics of Marginalization and Regional Inequality in Kenya Using Socioeconomic and Health Indicators
+Comparative clustering and visualization of socioeconomic and health indicators: A case of 47 counties in Kenya.
 
 Overview:
 
