@@ -42,15 +42,13 @@ class KMeansClustering:
         self.centroids = k_means.cluster_centers_
 
     def plot_cluster_results(self):
-        os.makedirs("../figs", exist_ok=True)
         plt.figure(figsize=(12, 10))
 
         # Define the specified colors for each cluster
         cluster_colors = {1: 'cyan', 2: 'green', 3: 'red', 4: 'blue', 5: 'magenta'}
 
         # Define manually labeled clusters with cluster 1 and 4 interchanged
-        cluster_labels = {4: 'Cluster 1', 2: 'Cluster 2', 3: 'Cluster 3', 1:
-            'Cluster 4', 5: 'Cluster 5'}
+        cluster_labels = {4: 'Cluster 1', 2: 'Cluster 2', 3: 'Cluster 3', 1: 'Cluster 4', 5: 'Cluster 5'}
 
         # Plot data points with varying markers based on cluster membership
         for i in range(self.n_clusters):
@@ -61,7 +59,7 @@ class KMeansClustering:
 
         # Highlight centroids
         centroids_legend = plt.scatter(self.centroids[:, 0], self.centroids[:, 1],
-                                       marker='x', s=150, color='black',
+                                       marker='o', s=150, color='black',
                                        label='Centroids', alpha=0.8)
 
         # Add interactive labels for data points
@@ -78,8 +76,7 @@ class KMeansClustering:
         # Manually specify legend handles and labels to ensure correct order
         legend_handles = [
             plt.Line2D([0], [0], marker='o', color=cluster_colors[i + 1], linestyle='',
-                       markersize=8, alpha=0.7) for i
-            in range(self.n_clusters)]
+                       markersize=8, alpha=0.7) for i in range(self.n_clusters)]
         legend_labels = [cluster_labels[i + 1] for i in range(self.n_clusters)]
 
         # Move Cluster 1 to the first position and Cluster 4 to the fourth position
@@ -88,10 +85,7 @@ class KMeansClustering:
 
         # Add legend including centroids
         plt.legend(legend_handles + [centroids_legend], legend_labels + ['Centroids'],
-                   prop={'size': 12}, markerscale=1.5,
-                   loc='upper left')
-
-        # Save plot
+                   prop={'size': 12}, markerscale=1.0, loc='upper left')
         plt.savefig("./figs/kmeans_plot.pdf")
 
     def save_map_as_pdf(self, map_url, output_file):
